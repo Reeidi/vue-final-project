@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { getAllDrawings } from '@/api/drawingsAPI';
+import DrawingCard from '@/components/DrawingCard.vue';
 
 const allDrawings = ref([]);
 
@@ -19,6 +20,13 @@ loadData();
         <h2 class="sectionTitle" style="text-align: center;">Our Gallery</h2>
 
         {{ allDrawings.length }}
+
+        <ul>
+          <DrawingCard v-for="drawing in allDrawings" :key="drawing._id" :imageUrl="drawing.imageUrl"
+            :imageId="drawing._id" :title="drawing.title" :authorName="drawing.author.firstName"
+            :authorAge="drawing.author.age" :userLikesImageProp="drawing.userLikesImage"
+            :likesProp="drawing.votes.length" />
+        </ul>
 
         <div class="clear"></div>
       </div>

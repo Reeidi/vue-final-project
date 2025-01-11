@@ -2,3 +2,19 @@
   width: 100%;
   background: url(../assets/images/bg.jpg) center 0 no-repeat;
 }
+
+.container_12 {
+  display: flex;
+}
+
+.left-column {
+  flex: 0 0 auto;
+  padding: 0 10px;
+  width: 33.33333333%;
+}
+
+.right-column {
+  flex: 0 0 auto;
+  padding: 0 10px;
+  max-width: 66.6666666667%;
+}

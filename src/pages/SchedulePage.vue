@@ -5,7 +5,7 @@ import ScheduleItem from '@/components/ScheduleItem.vue';
 <template>
   <section id="content">
     <div class="container_12">
-      <div class="grid_4 bot-1">
+      <div class="left-column bot-1">
         <h2 class="sectionTitle top-6">About Schedule</h2>
         <p class="sideTextTitle"><strong>At vero eos et accusam et justo duo dolores et ea rebum.</strong>
         </p>
@@ -17,7 +17,7 @@ import ScheduleItem from '@/components/ScheduleItem.vue';
           et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum <br />
           dolor sit amet.</p>
       </div>
-      <div class="grid_8">
+      <div class="right-column">
         <div class="block-1 top-5">
           <div class="block-1-shadow">
             <h2 class="sectionTitle">Schedule</h2>

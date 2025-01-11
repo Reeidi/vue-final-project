@@ -5,7 +5,7 @@
 <template>
   <section id="content">
     <div class="container_12">
-      <div class="grid_4 bot-1">
+      <div class="left-column bot-1">
         <div class="art"></div>
         <h2 class="top-1 sectionTitle">Events</h2>
         <p class="text-1 p3">April 18 - "Spring's Bloom"</p>
@@ -18,7 +18,7 @@
           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</p>
         <router-link to="/schedule" class="link orange">More events</router-link>
       </div>
-      <div class="grid_8">
+      <div class="right-column">
         <div class="pad-1">
           <h2 class="p2">Welcome to Art School</h2>
           <p class="text-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor

@@ -4,7 +4,7 @@
 <template>
   <section id="content">
     <div class="container_12">
-      <div class="grid_4 bot-1">
+      <div class="left-column bot-1">
         <h2 class="margins1 sectionTitle">Teachers</h2>
         <p class="text-1 p3">Peter Stanton</p>
         <p class="sideText">Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
@@ -22,7 +22,7 @@
           sed diam <a href="#" class="link"> More...</a>
         </p>
       </div>
-      <div class="grid_8">
+      <div class="right-column">
         <div class="block-1 top-5">
           <div class="block-1-shadow">
             <h2 class="sectionTitle">A Few Words About Us</h2>

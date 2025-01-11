@@ -1,4 +1,5 @@
 import AboutPage from '@/pages/AboutPage.vue'
+import DrawingPage from '@/pages/DrawingPage.vue'
 import GalleryPage from '@/pages/GalleryPage.vue'
 import HomePage from '@/pages/HomePage.vue'
 import SchedulePage from '@/pages/SchedulePage.vue'
@@ -26,6 +27,12 @@ const router = createRouter({
       path: '/gallery',
       name: 'Gallery',
       component: GalleryPage,
+    },
+    {
+      path: '/drawing/:imageId',
+      name: 'DrawingPage',
+      component: DrawingPage,
+      props: true,
     },
   ],
 })

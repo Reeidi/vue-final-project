@@ -13,7 +13,9 @@ defineProps({
 <template>
   <li class="card">
     <strong class="strongText">{{ title }}</strong>
-    <img :src="imageUrl" alt="" class="imageBorder" />
+    <router-link :to="{ name: 'DrawingPage', params: { imageId: imageId } }">
+      <img :src="imageUrl" alt="" class="imageBorder" />
+    </router-link>
     <div class="info">
       <small class="subtitle">{{ `${authorName}, ${authorAge}` }}</small>
     </div>

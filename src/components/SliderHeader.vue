@@ -21,11 +21,11 @@
         <a href="#" class="next"></a>
       </div>
       <ul class="menu">
-        <li><router-link class="clr-1" to="/">Home</router-link></li>
-        <li><router-link class="clr-2" to="about">About</router-link></li>
-        <li><router-link class="clr-3" to="schedule">Schedule</router-link></li>
-        <li><router-link class="clr-4" to="gallery">Gallery</router-link></li>
-        <li><router-link class="clr-5" to="contacts">Contacts</router-link></li>
+        <li><router-link class="clr-1" :to="{ name: 'Home' }">Home</router-link></li>
+        <li><router-link class="clr-2" :to="{ name: 'About' }">About</router-link></li>
+        <li><router-link class="clr-3" :to="{ name: 'Schedule' }">Schedule</router-link></li>
+        <li><router-link class="clr-4" :to="{ name: 'Gallery' }">Gallery</router-link></li>
+        <li><router-link class="clr-5" :to="{ name: 'Home' }">Contacts</router-link></li>
       </ul>
     </nav>
   </header>

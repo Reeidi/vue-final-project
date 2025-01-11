@@ -1,6 +1,7 @@
 <script setup>
 import NavigationBar from './components/NavigationBar.vue';
 import SliderHeader from './components/SliderHeader.vue';
+import HomePage from './pages/HomePage.vue';
 
 </script>
 
@@ -8,6 +9,8 @@ import SliderHeader from './components/SliderHeader.vue';
   <NavigationBar />
   <div class="main">
     <SliderHeader />
+
+    <HomePage />
   </div>
 </template>
 

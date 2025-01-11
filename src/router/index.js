@@ -1,4 +1,5 @@
 import AboutPage from '@/pages/AboutPage.vue'
+import GalleryPage from '@/pages/GalleryPage.vue'
 import HomePage from '@/pages/HomePage.vue'
 import SchedulePage from '@/pages/SchedulePage.vue'
 import { createRouter, createWebHistory } from 'vue-router'
@@ -20,6 +21,11 @@ const router = createRouter({
       path: '/schedule',
       name: 'Schedule',
       component: SchedulePage,
+    },
+    {
+      path: '/gallery',
+      name: 'Gallery',
+      component: GalleryPage,
     },
   ],
 })

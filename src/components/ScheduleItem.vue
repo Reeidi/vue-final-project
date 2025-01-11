@@ -14,4 +14,8 @@ defineProps({
   </td>
 </template>
 
-<style scoped></style>
+<style scoped>
+td {
+  background: transparent;
+}
+</style>

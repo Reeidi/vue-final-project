@@ -1,6 +1,7 @@
 <script setup>
 import NavigationBar from './components/NavigationBar.vue';
 import SliderHeader from './components/SliderHeader.vue';
+import AboutPage from './pages/AboutPage.vue';
 import HomePage from './pages/HomePage.vue';
 
 </script>
@@ -11,6 +12,7 @@ import HomePage from './pages/HomePage.vue';
     <SliderHeader />
 
     <HomePage />
+    <AboutPage />
   </div>
 </template>
 

@@ -1,4 +1,15 @@
 <script setup>
+import { ref } from 'vue';
+import { getAllDrawings } from '@/api/drawingsAPI';
+
+const allDrawings = ref([]);
+
+async function loadData() {
+  allDrawings.value = await getAllDrawings();
+  let a = 1;
+}
+
+loadData();
 </script>
 
 <template>
@@ -6,6 +17,8 @@
     <div class="container">
       <div class="containerPaperEffect">
         <h2 class="sectionTitle" style="text-align: center;">Our Gallery</h2>
+
+        {{ allDrawings.length }}
 
         <div class="clear"></div>
       </div>

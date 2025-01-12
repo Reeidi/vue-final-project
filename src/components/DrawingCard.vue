@@ -1,4 +1,6 @@
 <script setup>
+import LikesCounter from './LikesCounter.vue';
+
 defineProps({
   imageUrl: { type: String },
   imageId: { type: String },
@@ -18,6 +20,7 @@ defineProps({
     </router-link>
     <div class="info">
       <small class="subtitle">{{ `${authorName}, ${authorAge}` }}</small>
+      <LikesCounter />
     </div>
   </li>
 </template>

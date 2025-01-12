@@ -1,4 +1,6 @@
 <script setup>
+import LikesCounter from '@/components/LikesCounter.vue';
+
 
 const author = {
   firstName: 'Radost',
@@ -27,6 +29,7 @@ const drawing = {
           <p>{{ drawing.description }}</p>
         </div>
 
+        <LikesCounter />
       </div>
     </div>
   </div>

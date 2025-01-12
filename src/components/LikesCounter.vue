@@ -1,9 +1,17 @@
 <script setup>
 import heartIcon from "../assets/images/heart-icon.png";
 import heartEmptyIcon from "../assets/images/heart-empty-icon.png";
+import { toRef } from "vue";
 
-const userLikesImage = true;
-const likes = 4;
+const props = defineProps({
+  likesProp: { type: Number },
+  userLikesImageProp: { type: Boolean },
+  imageId: { type: String }
+})
+
+const likes = toRef(props.likesProp);
+const userLikesImage = toRef(props.userLikesImageProp);
+
 </script>
 
 <template>

@@ -31,7 +31,8 @@ loadData();
           <p>{{ drawing.description }}</p>
         </div>
 
-        <LikesCounter />
+        <LikesCounter :likesProp="drawing.votes.length" :userLikesImageProp="drawing.userLikesImage"
+          :imageId="imageId" />
       </div>
     </div>
   </div>

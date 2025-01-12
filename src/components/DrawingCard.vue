@@ -7,8 +7,8 @@ defineProps({
   title: { type: String },
   authorName: { type: String },
   authorAge: { type: Number },
-  userLikesImageProp: { type: Number },
-  likesProp: { type: String }
+  userLikesImageProp: { type: Boolean },
+  likesProp: { type: Number }
 })
 </script>
 
@@ -20,7 +20,7 @@ defineProps({
     </router-link>
     <div class="info">
       <small class="subtitle">{{ `${authorName}, ${authorAge}` }}</small>
-      <LikesCounter />
+      <LikesCounter :likesProp="likesProp" :userLikesImageProp="userLikesImageProp" :imageId="imageId" />
     </div>
   </li>
 </template>

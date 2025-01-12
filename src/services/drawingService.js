@@ -1,22 +1,12 @@
 import { getAllDrawingsUrl } from '@/config/constants'
-import axiosAS from '../config/axiosAS'
+import { makeGetRequest } from '@/helpers/serverCommunication'
 
 export async function getAllDrawings() {
-  try {
-    const res = await axiosAS.get(getAllDrawingsUrl)
-    return res.data
-  } catch (e) {
-    console.error('ERROR', e)
-    return []
-  }
+  const result = await makeGetRequest(getAllDrawingsUrl)
+  return result || []
 }
 
 export async function getDrawing(drawingId) {
-  try {
-    const res = await axiosAS.get(`${getAllDrawingsUrl}/${drawingId}`)
-    return res.data
-  } catch (e) {
-    console.error('ERROR', e)
-    return []
-  }
+  const result = await makeGetRequest(`${getAllDrawingsUrl}/${drawingId}`)
+  return result || null
 }

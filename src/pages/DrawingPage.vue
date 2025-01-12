@@ -9,10 +9,12 @@ const imageId = route.params.imageId;
 
 const author = ref({});
 const drawing = ref({});
+const likesCount = ref(0);
 
 async function loadData() {
   drawing.value = await getDrawing(imageId);
   author.value = drawing.value.author;
+  likesCount.value = drawing.value.votes.length;
 };
 
 loadData();
@@ -31,8 +33,7 @@ loadData();
           <p>{{ drawing.description }}</p>
         </div>
 
-        <LikesCounter :likesProp="drawing.votes.length" :userLikesImageProp="drawing.userLikesImage"
-          :imageId="imageId" />
+        <LikesCounter :likesProp="likesCount" :userLikesImageProp="drawing.userLikesImage" :imageId="imageId" />
       </div>
     </div>
   </div>

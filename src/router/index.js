@@ -3,6 +3,7 @@ import DrawingPage from '@/pages/DrawingPage.vue'
 import GalleryPage from '@/pages/GalleryPage.vue'
 import HomePage from '@/pages/HomePage.vue'
 import SchedulePage from '@/pages/SchedulePage.vue'
+import UserLoginPage from '@/pages/UserLoginPage.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -33,6 +34,11 @@ const router = createRouter({
       name: 'DrawingPage',
       component: DrawingPage,
       props: true,
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: UserLoginPage,
     },
   ],
 })

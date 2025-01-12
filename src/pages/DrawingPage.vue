@@ -1,19 +1,21 @@
 <script setup>
+import { ref } from 'vue';
+import { useRoute } from 'vue-router';
+import { getDrawing } from '@/services/drawingService';
 import LikesCounter from '@/components/LikesCounter.vue';
 
+const route = useRoute();
+const imageId = route.params.imageId;
 
-const author = {
-  firstName: 'Radost',
-  lastName: 'Peneva',
-  age: 30
+const author = ref({});
+const drawing = ref({});
+
+async function loadData() {
+  drawing.value = await getDrawing(imageId);
+  author.value = drawing.value.author;
 };
 
-const drawing = {
-  title: "My brushes",
-  description: "alabala",
-  imageUrl: "https://mymodernmet.com/wp/wp-content/uploads/2019/03/elements-of-art-6.jpg"
-};
-
+loadData();
 </script>
 
 <template>

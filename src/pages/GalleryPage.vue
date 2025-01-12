@@ -1,13 +1,12 @@
 <script setup>
 import { ref } from 'vue';
-import { getAllDrawings } from '@/api/drawingsAPI';
 import DrawingCard from '@/components/DrawingCard.vue';
+import { getAllDrawings } from '@/services/drawingService';
 
 const allDrawings = ref([]);
 
 async function loadData() {
   allDrawings.value = await getAllDrawings();
-  let a = 1;
 }
 
 loadData();

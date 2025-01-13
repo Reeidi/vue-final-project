@@ -1,11 +1,13 @@
 <script setup>
-import * as userService from '@/services/userService';
+import { useUserStore } from '@/stores/useUserStore';
 import useVuelidate from '@vuelidate/core';
 import { required } from '@vuelidate/validators';
 import { computed, ref } from 'vue';
 
 const anyErrors = ref(false);
-const errors = ref({ email: null, password: null });
+// const errors = ref({ email: null, password: null });
+
+const userStore = useUserStore();
 
 const formData = ref({ email: '', password: '' });
 const validationRules = computed(() => ({
@@ -22,7 +24,7 @@ async function onSubmit() {
   if (!isValid)
     return;
 
-  userService.login(formData.value)
+  await userStore.login(formData.value)
 }
 </script>
 

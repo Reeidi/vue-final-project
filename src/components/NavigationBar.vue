@@ -1,5 +1,11 @@
 <script setup>
+import { useUserStore } from '@/stores/useUserStore';
 
+const userStore = useUserStore();
+
+function logoutClicked() {
+  userStore.logout();
+}
 </script>
 
 <template>
@@ -13,10 +19,16 @@
       <div class="mx-auto flex-column flex-lg-row align-items-center">
       </div>
 
-      <ul class="navBarGroup">
-        <router-link to="/login" class="nav-link navLink">Login</router-link>
-        <router-link to="/register" class="nav-link navLink">Register</router-link>
-      </ul>
+      <div class="navBarGroup">
+        <template v-if="userStore.isUserLogged">
+          <p class="navItem">Welcome, {{ userStore.user?.email }}</p>
+          <router-link to="/logout" class="nav-link navItem" @click.prevent="logoutClicked">Logout</router-link>
+        </template>
+        <template v-else>
+          <router-link to="/login" class="nav-link navLink">Login</router-link>
+          <router-link to="/register" class="nav-link navLink">Register</router-link>
+        </template>
+      </div>
     </div>
   </nav>
 </template>

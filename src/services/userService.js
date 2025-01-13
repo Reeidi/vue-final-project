@@ -1,7 +1,7 @@
 import { loginUserUrl, registerUserUrl } from '@/config/constants'
 import { makePostRequest } from '@/helpers/serverCommunication'
 
-export async function register(firstName, lastName, email, age, password, repeatPassword) {
+export async function registerUser(firstName, lastName, email, age, password, repeatPassword) {
   const result = await makePostRequest(registerUserUrl, {
     firstName,
     lastName,
@@ -14,7 +14,7 @@ export async function register(firstName, lastName, email, age, password, repeat
   return result
 }
 
-export async function login(credentials) {
+export async function loginUser(credentials) {
   const result = await makePostRequest(loginUserUrl, credentials)
 
   if (result['user'] && result['token']) {

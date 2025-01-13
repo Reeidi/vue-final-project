@@ -15,10 +15,6 @@ function logoutClicked() {
     </router-link>
 
     <div class="navbar-collapse">
-      <!-- Това не е CSS курс. Това остава за да се подравнят правилно линковете за Login/Logout -->
-      <div class="mx-auto flex-column flex-lg-row align-items-center">
-      </div>
-
       <div class="navBarGroup">
         <template v-if="userStore.isUserLogged">
           <p class="navItem">Welcome, {{ userStore.user?.email }}</p>
@@ -50,6 +46,8 @@ function logoutClicked() {
 .navBarGroup {
   display: flex;
   margin-bottom: 0;
+  width: 100%;
+  justify-content: right;
 }
 
 .navLink {

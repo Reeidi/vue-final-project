@@ -16,12 +16,17 @@ export const useUserStore = defineStore('userStore', () => {
 
   function logout() {
     user.value = null;
-  }
+  };
+
+  function getAuthToken() {
+    return user.value?.token;
+  };
 
   return {
     user,
     isUserLogged,
     login,
-    logout
+    logout,
+    getAuthToken
   };
 });

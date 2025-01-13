@@ -34,6 +34,11 @@ loadData();
         </div>
 
         <LikesCounter :likesProp="likesCount" :userLikesImageProp="drawing.userLikesImage" :imageId="imageId" />
+
+        <template v-if="drawing.isAuthor">
+          <div className="pad-2">
+          </div>
+        </template>
       </div>
     </div>
   </div>

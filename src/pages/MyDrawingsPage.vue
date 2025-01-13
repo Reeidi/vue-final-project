@@ -1,33 +1,33 @@
 <script setup>
-import { ref } from 'vue';
 import DrawingCard from '@/components/DrawingCard.vue';
-import { getAllDrawings } from '@/services/drawingService';
+import { useDrawings } from '@/composables/useDrawings';
 import { useUserStore } from '@/stores/useUserStore';
+import { computed, ref } from 'vue';
 
 const userStore = useUserStore();
 
 const user = ref(userStore.user);
-const allDrawings = ref([]);
 
-async function loadData() {
-  allDrawings.value = await getAllDrawings();
-}
+const { allDrawings, isLoading, error } = useDrawings();
 
-loadData();
+const myDrawings = computed(() => allDrawings.value.filter(drawing => drawing.author._id === user.value._id));
+
 </script>
 
 <template>
   <section id="content">
     <div class="container">
       <div class="containerPaperEffect">
-        <h2 class="sectionTitle" style="text-align: center;">Our Gallery</h2>
+        <h2 class="sectionTitle" style="text-align: center;">{{ user.firstName }}'s drawings</h2>
 
-        <div v-if="user" clas="buttonDiv">
-          <router-link :to="{ name: 'MyDrawings' }" class="button">My drawings</router-link>
+        <div class="buttonDiv">
+          <router-link to="/drawing/create" class="button">Add drawing</router-link>
         </div>
 
-        <ul>
-          <DrawingCard v-for="drawing in allDrawings" :key="drawing._id" :imageUrl="drawing.imageUrl"
+        <p v-if="isLoading">Loading...</p>
+        <p v-if="error" class="error">{{ error }}</p>
+        <ul v-else>
+          <DrawingCard v-for="drawing in myDrawings" :key="drawing._id" :imageUrl="drawing.imageUrl"
             :imageId="drawing._id" :title="drawing.title" :authorName="drawing.author.firstName"
             :authorAge="drawing.author.age" :userLikesImageProp="drawing.userLikesImage"
             :likesProp="drawing.votes.length" />
@@ -48,7 +48,7 @@ loadData();
 }
 
 .containerPaperEffect {
-  background: url(../assets/images/block-1-shadow.png) 0 0 repeat;
+  background: url(../../../images/block-1-shadow.png) 0 0 repeat;
   padding: 18px 30px 0 30px;
 }
 

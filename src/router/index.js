@@ -2,6 +2,7 @@ import AboutPage from '@/pages/AboutPage.vue'
 import DrawingPage from '@/pages/DrawingPage.vue'
 import GalleryPage from '@/pages/GalleryPage.vue'
 import HomePage from '@/pages/HomePage.vue'
+import MyDrawingsPage from '@/pages/MyDrawingsPage.vue'
 import SchedulePage from '@/pages/SchedulePage.vue'
 import UserLoginPage from '@/pages/UserLoginPage.vue'
 import { createRouter, createWebHistory } from 'vue-router'
@@ -40,6 +41,11 @@ const router = createRouter({
       name: 'Login',
       component: UserLoginPage,
     },
+    {
+      path: '/mine',
+      name: 'MyDrawings',
+      component: MyDrawingsPage
+    }
   ],
 });
 

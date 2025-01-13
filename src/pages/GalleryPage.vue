@@ -18,8 +18,6 @@ loadData();
       <div class="containerPaperEffect">
         <h2 class="sectionTitle" style="text-align: center;">Our Gallery</h2>
 
-        {{ allDrawings.length }}
-
         <ul>
           <DrawingCard v-for="drawing in allDrawings" :key="drawing._id" :imageUrl="drawing.imageUrl"
             :imageId="drawing._id" :title="drawing.title" :authorName="drawing.author.firstName"

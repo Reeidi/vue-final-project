@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { getDrawing } from '@/services/drawingService';
 import LikesCounter from '@/components/LikesCounter.vue';
@@ -9,12 +9,12 @@ const imageId = route.params.imageId;
 
 const author = ref({});
 const drawing = ref({});
-const likesCount = ref(0);
+const likesCount = computed(() => drawing.value?.votes.length);
+const userLikesImage = computed(() => drawing.value?.userLikesImage)
 
 async function loadData() {
   drawing.value = await getDrawing(imageId);
   author.value = drawing.value.author;
-  likesCount.value = drawing.value.votes.length;
 };
 
 loadData();
@@ -33,12 +33,13 @@ loadData();
           <p>{{ drawing.description }}</p>
         </div>
 
-        <LikesCounter :likesProp="likesCount" :userLikesImageProp="drawing.userLikesImage" :imageId="imageId" />
+        <LikesCounter :likesProp="likesCount" :userLikesImageProp="userLikesImage" :imageId="imageId" />
 
-        <template v-if="drawing.isAuthor">
-          <div className="pad-2">
-          </div>
-        </template>
+        <!-- show only to author -->
+        <div v-if="drawing.isAuthor" class="pad-2">
+          <input type="submit" class="button" value="Edit" onClick="" />
+          <input type="submit" class="button" value="Delete" onClick={deleteClick} />
+        </div>
       </div>
     </div>
   </div>

@@ -5,6 +5,7 @@ import HomePage from '@/pages/HomePage.vue'
 import MyDrawingsPage from '@/pages/MyDrawingsPage.vue'
 import SchedulePage from '@/pages/SchedulePage.vue'
 import UserLoginPage from '@/pages/UserLoginPage.vue'
+import UserRegistrationPage from '@/pages/UserRegistrationPage.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -45,6 +46,11 @@ const router = createRouter({
       path: '/mine',
       name: 'MyDrawings',
       component: MyDrawingsPage
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: UserRegistrationPage
     }
   ],
 });

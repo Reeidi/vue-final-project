@@ -12,6 +12,7 @@ export const useUserStore = defineStore('userStore', () => {
       return false;
 
     user.value = userInfo;
+    return true;
   };
 
   function logout() {

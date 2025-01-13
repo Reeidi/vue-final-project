@@ -1,17 +1,8 @@
 import { loginUserUrl, registerUserUrl } from '@/config/constants'
 import { makePostRequest } from '@/helpers/serverCommunication'
 
-export async function registerUser(firstName, lastName, email, age, password, repeatPassword) {
-  const result = await makePostRequest(registerUserUrl, {
-    firstName,
-    lastName,
-    email,
-    age,
-    password,
-    repeatPassword,
-  });
-
-  return result;
+export async function registerUser(userInfo) {
+  return await makePostRequest(registerUserUrl, userInfo);
 }
 
 export async function loginUser(credentials) {

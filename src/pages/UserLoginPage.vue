@@ -3,6 +3,9 @@ import { useUserStore } from '@/stores/useUserStore';
 import useVuelidate from '@vuelidate/core';
 import { required } from '@vuelidate/validators';
 import { computed, ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const anyErrors = ref(false);
 // const errors = ref({ email: null, password: null });
@@ -24,7 +27,10 @@ async function onSubmit() {
   if (!isValid)
     return;
 
-  await userStore.login(formData.value);
+  const result = await userStore.login(formData.value);
+  if (result) {
+    router.push({ name: 'Home' });
+  }
 }
 </script>
 

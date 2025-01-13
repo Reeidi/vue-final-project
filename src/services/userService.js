@@ -9,13 +9,13 @@ export async function registerUser(firstName, lastName, email, age, password, re
     age,
     password,
     repeatPassword,
-  })
+  });
 
-  return result
+  return result;
 }
 
 export async function loginUser(credentials) {
-  const result = await makePostRequest(loginUserUrl, credentials)
+  const result = await makePostRequest(loginUserUrl, credentials);
 
   if (result['user'] && result['token']) {
     let userInfo = {
@@ -25,10 +25,10 @@ export async function loginUser(credentials) {
       lastName: result.user.lastName,
       age: result.user.age,
       token: result.token,
-    }
+    };
 
-    return userInfo
+    return userInfo;
   }
 
-  return null
+  return null;
 }

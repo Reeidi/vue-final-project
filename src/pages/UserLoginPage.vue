@@ -24,7 +24,7 @@ async function onSubmit() {
   if (!isValid)
     return;
 
-  await userStore.login(formData.value)
+  await userStore.login(formData.value);
 }
 </script>
 

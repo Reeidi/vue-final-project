@@ -41,6 +41,6 @@ const router = createRouter({
       component: UserLoginPage,
     },
   ],
-})
+});
 
-export default router
+export default router;

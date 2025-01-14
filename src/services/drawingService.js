@@ -12,6 +12,11 @@ export async function getDrawing(drawingId) {
   return result || null;
 }
 
+export async function like(drawingId) {
+  const result = await makeGetRequest(`${getAllDrawingsUrl}/${drawingId}/vote`, getToken());
+  return result || null;
+}
+
 // Don't run this before it is needed: https://pinia.vuejs.org/core-concepts/outside-component-usage.html
 function getToken() {
   const userStore = useUserStore();

@@ -6,6 +6,7 @@ import MyDrawingsPage from '@/pages/MyDrawingsPage.vue'
 import SchedulePage from '@/pages/SchedulePage.vue'
 import UserLoginPage from '@/pages/UserLoginPage.vue'
 import UserRegistrationPage from '@/pages/UserRegistrationPage.vue'
+import { useUserStore } from '@/stores/useUserStore'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -41,18 +42,38 @@ const router = createRouter({
       path: '/login',
       name: 'Login',
       component: UserLoginPage,
-    },
-    {
-      path: '/mine',
-      name: 'MyDrawings',
-      component: MyDrawingsPage
+      meta: { requiresGuest: true }
     },
     {
       path: '/register',
       name: 'Register',
-      component: UserRegistrationPage
-    }
+      component: UserRegistrationPage,
+      meta: { requiresGuest: true }
+    },
+    {
+      path: '/mine',
+      name: 'MyDrawings',
+      component: MyDrawingsPage,
+      meta: { requiresAuth: true }
+    },
   ],
+});
+
+router.beforeEach((to, from, next) => {
+  const userStore = useUserStore();
+
+  if (to.meta.requiresAuth && !userStore.isUserLogged) {
+    // Redirect to login if not authenticated
+    return next({ name: 'Login' });
+  }
+
+  if (to.meta.requiresGuest && userStore.isUserLogged) {
+    // Redirect to home if already authenticated
+    return next({ name: 'Home' });
+  }
+
+  // Allow navigation
+  next();
 });
 
 export default router;

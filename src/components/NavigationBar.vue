@@ -1,11 +1,14 @@
 <script setup>
 import { useUserStore } from '@/stores/useUserStore';
+import { onMounted } from 'vue';
 
 const userStore = useUserStore();
 
 function logoutClicked() {
   userStore.logout();
 }
+
+onMounted(() => userStore.reAuthUser());
 </script>
 
 <template>

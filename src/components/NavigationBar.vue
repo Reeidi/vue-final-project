@@ -21,6 +21,8 @@ onMounted(() => userStore.reAuthUser());
       <div class="navBarGroup">
         <template v-if="userStore.isUserLogged">
           <p class="navItem">Welcome, {{ userStore.user?.email }}</p>
+          <router-link to="/mine" class="nav-link navItem">My drawings</router-link>
+          <router-link to="/drawing/create" class="nav-link navItem">Add drawing</router-link>
           <router-link to="/" class="nav-link navItem" @click.prevent="logoutClicked">Logout</router-link>
         </template>
         <template v-else>

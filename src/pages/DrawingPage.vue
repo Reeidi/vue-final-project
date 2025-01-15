@@ -1,10 +1,11 @@
 <script setup>
 import { computed } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import LikesCounter from '@/components/LikesCounter.vue';
 import { useDrawingLoader } from '@/composables/useDrawingLoader';
 
 const route = useRoute();
+const router = useRouter();
 const imageId = route.params.imageId;
 const { drawing, author } = useDrawingLoader(imageId);
 
@@ -30,7 +31,8 @@ const userLikesImage = computed(() => drawing.value?.userLikesImage)
 
         <!-- show only to author -->
         <div v-if="drawing.isAuthor" class="pad-2">
-          <input type="submit" class="button" value="Edit" onClick="" />
+          <input type="submit" class="button" value="Edit"
+            @click="() => router.push({ name: 'DrawingEdit', params: { imageId: imageId } })" />
           <input type="submit" class="button" value="Delete" onClick={deleteClick} />
         </div>
       </div>

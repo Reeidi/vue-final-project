@@ -2,12 +2,12 @@
 #slide {
   position: relative;
   overflow: hidden;
-  width: 920px;
+  width: 950px;
   padding: 44px 40px 0 40px;
   z-index: 2;
 }
 .slider {
-  width: 920px;
+  width: 950px;
   height: 429px;
   margin: 0 auto;
   position: relative;
@@ -29,6 +29,7 @@
 }
 .prev:hover {
   background-position: 0 bottom;
+  cursor: pointer;
 }
 .next {
   position: absolute;
@@ -42,6 +43,7 @@
 }
 .next:hover {
   background-position: 0 0;
+  cursor: pointer;
 }
 .banner {
   display: none;

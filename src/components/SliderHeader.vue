@@ -1,4 +1,13 @@
 <script setup>
+import { ref } from 'vue';
+
+const imageNumber = ref(1);
+
+window.setInterval(() => {
+  imageNumber.value++;
+  if (imageNumber.value == 4)
+    imageNumber.value = 1;
+}, 5000);
 </script>
 
 <template>
@@ -11,14 +20,10 @@
     <nav class="nav">
       <div id="slide">
         <div class="slider">
-          <ul class="items">
-            <li><img src="../assets/images/slider-1.jpg" alt="" /></li>
-            <!-- <li><img src="../assets/images/slider-2.jpg" alt="" /></li> -->
-            <!-- <li><img src="../assets/images/slider-3.jpg" alt="" /></li> -->
-          </ul>
+          <img :src="`/src/assets/images/slider-${imageNumber}.jpg`" alt="" />
         </div>
-        <a href="#" class="prev"></a>
-        <a href="#" class="next"></a>
+        <div class="prev" @click="() => { imageNumber--; if (imageNumber == 0) imageNumber = 3; }"></div>
+        <div class="next" @click="() => { imageNumber++; if (imageNumber == 4) imageNumber = 1; }"></div>
       </div>
       <ul class="menu">
         <li><router-link class="clr-1" :to="{ name: 'Home' }">Home</router-link></li>

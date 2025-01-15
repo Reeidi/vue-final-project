@@ -1,5 +1,4 @@
 import axiosAS from '@/config/axiosAS';
-import { useUserStore } from '@/stores/useUserStore';
 
 async function request(url, method, data, authToken) {
   try {

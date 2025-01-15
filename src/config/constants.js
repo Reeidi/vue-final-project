@@ -6,6 +6,6 @@ export const loginUserUrl = `${baseUrl}/auth/login`
 export const createDrawingUrl = `${baseUrl}/posts/create`
 export const getAllDrawingsUrl = `${baseUrl}/posts`
 
-export const contact = `${baseUrl}/contact`
+export const contactUrl = `${baseUrl}/contact`
 
-export const events = `${baseUrl}/event`
+export const eventsUrl = `${baseUrl}/event`

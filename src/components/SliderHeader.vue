@@ -25,7 +25,7 @@
         <li><router-link class="clr-2" :to="{ name: 'About' }">About</router-link></li>
         <li><router-link class="clr-3" :to="{ name: 'Schedule' }">Schedule</router-link></li>
         <li><router-link class="clr-4" :to="{ name: 'Gallery' }">Gallery</router-link></li>
-        <li><router-link class="clr-5" :to="{ name: 'Home' }">Contacts</router-link></li>
+        <li><router-link class="clr-5" :to="{ name: 'Contacts' }">Contacts</router-link></li>
       </ul>
     </nav>
   </header>

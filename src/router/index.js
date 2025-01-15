@@ -1,4 +1,5 @@
 import AboutPage from '@/pages/AboutPage.vue'
+import ContactPage from '@/pages/ContactPage.vue'
 import DrawingCreatePage from '@/pages/DrawingCreatePage.vue'
 import DrawingEditPage from '@/pages/DrawingEditPage.vue'
 import DrawingPage from '@/pages/DrawingPage.vue'
@@ -69,6 +70,11 @@ const router = createRouter({
       name: 'DrawingEdit',
       component: DrawingEditPage,
       meta: { requiresAuth: true }
+    },
+    {
+      path: '/contacts',
+      name: 'Contacts',
+      component: ContactPage
     }
   ],
 });

@@ -3,6 +3,7 @@ import { computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import LikesCounter from '@/components/LikesCounter.vue';
 import { useDrawingLoader } from '@/composables/useDrawingLoader';
+import { deleteDrawing } from '@/services/drawingService';
 
 const route = useRoute();
 const router = useRouter();
@@ -11,6 +12,15 @@ const { drawing, author } = useDrawingLoader(imageId);
 
 const likesCount = computed(() => drawing.value?.votes.length);
 const userLikesImage = computed(() => drawing.value?.userLikesImage)
+
+async function deleteClick() {
+  const result = await deleteDrawing(imageId);
+  if (result) {
+    router.push({ name: 'Gallery' });
+  } else {
+    console.log("Error deleting image!");
+  }
+}
 
 </script>
 
@@ -33,7 +43,7 @@ const userLikesImage = computed(() => drawing.value?.userLikesImage)
         <div v-if="drawing.isAuthor" class="pad-2">
           <input type="submit" class="button" value="Edit"
             @click="() => router.push({ name: 'DrawingEdit', params: { imageId: imageId } })" />
-          <input type="submit" class="button" value="Delete" onClick={deleteClick} />
+          <input type="submit" class="button" value="Delete" @click="deleteClick" />
         </div>
       </div>
     </div>

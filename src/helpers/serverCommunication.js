@@ -39,3 +39,7 @@ export async function makeGetRequest(url, authToken = null) {
 export async function makePostRequest(url, data, authToken = null) {
   return await request(url, 'post', data, authToken);
 };
+
+export async function makeDeleteRequest(url, authToken = null) {
+  return await request(url, 'delete', undefined, authToken);
+}

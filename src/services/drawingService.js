@@ -1,5 +1,5 @@
 import { createDrawingUrl, getAllDrawingsUrl } from '@/config/constants'
-import { makeGetRequest, makePostRequest } from '@/helpers/serverCommunication'
+import { makeDeleteRequest, makeGetRequest, makePostRequest } from '@/helpers/serverCommunication'
 import { useUserStore } from '@/stores/useUserStore';
 
 export async function getAllDrawings() {
@@ -24,6 +24,11 @@ export async function createDrawing(title, description, imageUrl, author) {
 
 export async function editDrawing(id, title, description, imageUrl) {
   const result = await makePostRequest(`${getAllDrawingsUrl}/${id}/edit`, { title, description, imageUrl }, getToken());
+  return result?.success || false;
+}
+
+export async function deleteDrawing(imageId) {
+  const result = await makeDeleteRequest(`${getAllDrawingsUrl}/${imageId}`, getToken());
   return result?.success || false;
 }
 

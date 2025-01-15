@@ -1,4 +1,5 @@
 <script setup>
+import FormFieldset from '@/components/FormFieldset.vue';
 import { useUserStore } from '@/stores/useUserStore';
 import useVuelidate from '@vuelidate/core';
 import { required } from '@vuelidate/validators';
@@ -7,8 +8,7 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter();
 
-const anyErrors = ref(false);
-// const errors = ref({ email: null, password: null });
+const hasFailed = ref(false);
 
 const userStore = useUserStore();
 
@@ -23,6 +23,8 @@ const validationRules = computed(() => ({
 const v$ = useVuelidate(validationRules, { formData });
 
 async function onSubmit() {
+  hasFailed.value = false;
+
   const isValid = await v$.value.$validate();
   if (!isValid)
     return;
@@ -30,6 +32,8 @@ async function onSubmit() {
   const result = await userStore.login(formData.value);
   if (result) {
     router.push({ name: 'Home' });
+  } else {
+    hasFailed.value = true;
   }
 }
 </script>
@@ -40,19 +44,15 @@ async function onSubmit() {
       <h2 class="title">Login</h2>
 
       <form @submit.prevent="onSubmit">
-        <label htmlFor="email" class="label">
-          <strong class="labelStrong">Email:</strong>
+        <FormFieldset :title="'Email'" :errors="v$.formData.email.$errors">
           <input type="text" name="email" class="input" v-model="v$.formData.email.$model" />
-          <strong class="clear"></strong>
-        </label>
+        </FormFieldset>
 
-        <label htmlFor="password" class="label">
-          <strong class="labelStrong">Password:</strong>
+        <FormFieldset :title="'Password'" :errors="v$.formData.password.$errors">
           <input type="password" name="password" class="input" v-model="v$.formData.password.$model" />
-          <strong class="clear"></strong>
-        </label>
+        </FormFieldset>
 
-        <p :if="anyErrors" class="labelSmall">Invalid email or password.</p>
+        <p v-if="hasFailed" class="labelSmall">Invalid email or password.</p>
 
         <div class="pad-2">
           <input type="submit" class="sendButton" value="Log in" />
@@ -101,10 +101,6 @@ async function onSubmit() {
   min-height: 35px;
   align-items: center;
   justify-content: center;
-}
-
-.labelStrong {
-  width: 180px;
 }
 
 .labelSmall {

@@ -1,23 +1,17 @@
 <script setup>
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 import { useRoute } from 'vue-router';
-import { getDrawing } from '@/services/drawingService';
 import LikesCounter from '@/components/LikesCounter.vue';
+import { useDrawingLoader } from '@/composables/useDrawingLoader';
 
 const route = useRoute();
 const imageId = route.params.imageId;
 
-const author = ref({});
-const drawing = ref({});
+var { drawing, author } = useDrawingLoader(imageId);
+
 const likesCount = computed(() => drawing.value?.votes.length);
 const userLikesImage = computed(() => drawing.value?.userLikesImage)
 
-async function loadData() {
-  drawing.value = await getDrawing(imageId);
-  author.value = drawing.value.author;
-};
-
-loadData();
 </script>
 
 <template>

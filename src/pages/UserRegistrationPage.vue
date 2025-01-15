@@ -1,9 +1,12 @@
 <script setup>
+import FormFieldset from '@/components/FormFieldset.vue';
 import { registerUser } from '@/services/userService';
 import useVuelidate from '@vuelidate/core';
 import { email, maxValue, minLength, minValue, required } from '@vuelidate/validators';
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
+
+const error = ref(null);
 
 const router = useRouter();
 
@@ -33,6 +36,8 @@ const validationRules = computed(() => ({
 const v$ = useVuelidate(validationRules, { formData });
 
 async function onSubmit() {
+  error.value = null;
+
   const isValid = await v$.value.$validate();
   if (!isValid)
     return;
@@ -42,6 +47,7 @@ async function onSubmit() {
     router.push({ name: 'Home' });
   } else {
     console.log(result);
+    error.value = result.error;
   }
 }
 </script>
@@ -52,42 +58,32 @@ async function onSubmit() {
       <h2 class="title">Registration</h2>
 
       <form @submit.prevent="onSubmit">
-        <label htmlFor="firstName" class="label">
-          <strong class="labelStrong">First Name:</strong>
+        <FormFieldset :title="'First Name'" :errors="v$.formData.firstName.$errors">
           <input type="text" name="firstName" id="firstName" class="input" v-model="v$.formData.firstName.$model" />
-          <strong class="clear"></strong>
-        </label>
+        </FormFieldset>
 
-        <label htmlFor="lastName" class="label">
-          <strong class="labelStrong">Last Name:</strong>
+        <FormFieldset :title="'Last Name'" :errors="v$.formData.lastName.$errors">
           <input type="text" name="lastName" id="lastName" class="input" v-model="v$.formData.lastName.$model" />
-          <strong class="clear"></strong>
-        </label>
+        </FormFieldset>
 
-        <label htmlFor="email" class="label">
-          <strong class="labelStrong">Email:</strong>
+        <FormFieldset :title="'Email'" :errors="v$.formData.email.$errors">
           <input type="text" name="email" id="email" class="input" v-model="v$.formData.email.$model" />
-          <strong class="clear"></strong>
-        </label>
+        </FormFieldset>
 
-        <label htmlFor="age" class="label">
-          <strong class="labelStrong">Age:</strong>
+        <FormFieldset :title="'Age'" :errors="v$.formData.age.$errors">
           <input type="number" name="age" id="age" class="input" v-model="v$.formData.age.$model" />
-          <strong class="clear"></strong>
-        </label>
+        </FormFieldset>
 
-        <label htmlFor="password" class="label">
-          <strong class="labelStrong">Password:</strong>
+        <FormFieldset :title="'Password'" :errors="v$.formData.password.$errors">
           <input type="password" name="password" id="password" class="input" v-model="v$.formData.password.$model" />
-          <strong class="clear"></strong>
-        </label>
+        </FormFieldset>
 
-        <label htmlFor="repeatPassword" class="label">
-          <strong class="labelStrong">Repeat password:</strong>
+        <FormFieldset :title="'Repeat password'" :errors="v$.formData.repeatPassword.$errors">
           <input type="password" name="repeatPassword" id="repeatPassword" class="input"
             v-model="v$.formData.repeatPassword.$model" />
-          <strong class="clear"></strong>
-        </label>
+        </FormFieldset>
+
+        <p v-if="error" class="labelSmall">{{ error }}</p>
 
         <div class="pad-2">
           <input type="submit" class="sendButton" value="Sign Up" />
@@ -130,16 +126,9 @@ async function onSubmit() {
   box-shadow: 0 0 3px #c1c1c1;
 }
 
-.label {
-  position: relative;
+.labelSmall {
   display: flex;
-  min-height: 35px;
-  align-items: center;
-  justify-content: center;
-}
-
-.labelStrong {
-  width: 180px;
+  color: red;
 }
 
 .sendButton {

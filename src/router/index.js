@@ -1,5 +1,6 @@
 import AboutPage from '@/pages/AboutPage.vue'
 import DrawingCreatePage from '@/pages/DrawingCreatePage.vue'
+import DrawingEditPage from '@/pages/DrawingEditPage.vue'
 import DrawingPage from '@/pages/DrawingPage.vue'
 import GalleryPage from '@/pages/GalleryPage.vue'
 import HomePage from '@/pages/HomePage.vue'
@@ -61,6 +62,12 @@ const router = createRouter({
       path: '/drawing/create',
       name: 'DrawingCreate',
       component: DrawingCreatePage,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/drawing/:imageId/edit',
+      name: 'DrawingEdit',
+      component: DrawingEditPage,
       meta: { requiresAuth: true }
     }
   ],

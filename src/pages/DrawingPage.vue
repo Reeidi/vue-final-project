@@ -6,8 +6,7 @@ import { useDrawingLoader } from '@/composables/useDrawingLoader';
 
 const route = useRoute();
 const imageId = route.params.imageId;
-
-var { drawing, author } = useDrawingLoader(imageId);
+const { drawing, author } = useDrawingLoader(imageId);
 
 const likesCount = computed(() => drawing.value?.votes.length);
 const userLikesImage = computed(() => drawing.value?.userLikesImage)

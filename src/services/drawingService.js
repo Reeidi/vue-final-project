@@ -22,6 +22,11 @@ export async function createDrawing(title, description, imageUrl, author) {
   return result?.success || false;
 }
 
+export async function editDrawing(id, title, description, imageUrl) {
+  const result = await makePostRequest(`${getAllDrawingsUrl}/${id}/edit`, { title, description, imageUrl }, getToken());
+  return result?.success || false;
+}
+
 // Don't run this before it is needed: https://pinia.vuejs.org/core-concepts/outside-component-usage.html
 function getToken() {
   const userStore = useUserStore();

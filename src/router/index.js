@@ -1,4 +1,5 @@
 import AboutPage from '@/pages/AboutPage.vue'
+import DrawingCreatePage from '@/pages/DrawingCreatePage.vue'
 import DrawingPage from '@/pages/DrawingPage.vue'
 import GalleryPage from '@/pages/GalleryPage.vue'
 import HomePage from '@/pages/HomePage.vue'
@@ -56,6 +57,12 @@ const router = createRouter({
       component: MyDrawingsPage,
       meta: { requiresAuth: true }
     },
+    {
+      path: '/drawing/create',
+      name: 'DrawingCreate',
+      component: DrawingCreatePage,
+      meta: { requiresAuth: true }
+    }
   ],
 });
 

@@ -60,7 +60,7 @@ async function deleteClick() {
 }
 
 .containerPaperEffect {
-  background: url(../../images/block-1-shadow.png) 0 0 repeat;
+  background: url(../assets/images/block-1-shadow.png) 0 0 repeat;
   padding: 18px 30px 0 30px;
 }
 

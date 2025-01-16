@@ -91,6 +91,15 @@ a:hover {
 .clr-7 {
   color: #fff;
 }
+
+.clr-1:hover,
+.clr-2:hover,
+.clr-3:hover,
+.clr-4:hover,
+.clr-5:hover {
+  text-decoration: underline;
+}
+
 .text-1 {
   font-size: 18px;
   line-height: 25px;

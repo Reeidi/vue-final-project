@@ -9,17 +9,17 @@
         <p class="text-1 p3">Peter Stanton</p>
         <p class="sideText">Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
           dolore magna aliquyam erat
-          <a href="#" class="link"> More...</a>
+          <a href="#" class="link" @click.prevent=""> More...</a>
         </p>
         <p class="text-1 top-2 p3">Helen Perton</p>
         <p class="sideText">At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd
           gubergren, no sea takimata sanctus
-          est <a href="#" class="link"> More...</a>
+          est <a href="#" class="link" @click.prevent=""> More...</a>
         </p>
         <p class="text-1 top-2 p3">Jesica Murray</p>
         <p class="sideText">Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing
           elitr, <br />
-          sed diam <a href="#" class="link"> More...</a>
+          sed diam <a href="#" class="link" @click.prevent=""> More...</a>
         </p>
       </div>
       <div class="right-column">

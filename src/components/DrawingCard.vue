@@ -13,7 +13,7 @@ defineProps({
 </script>
 
 <template>
-  <li class="card">
+  <li class="drawing-card">
     <strong class="strongText">{{ title }}</strong>
     <router-link :to="{ name: 'DrawingPage', params: { imageId: imageId } }">
       <img :src="imageUrl" alt="" class="imageBorder" />
@@ -26,7 +26,7 @@ defineProps({
 </template>
 
 <style scoped>
-.card {
+.drawing-card {
   width: 50%;
   padding: 20px 60px 20px 60px;
   display: inline-flex;

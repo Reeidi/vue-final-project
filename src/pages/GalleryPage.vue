@@ -22,8 +22,9 @@ loadData();
       <div class="containerPaperEffect">
         <h2 class="sectionTitle" style="text-align: center;">Our Gallery</h2>
 
-        <div v-if="user" clas="buttonDiv">
+        <div v-if="user" class="buttonDiv">
           <router-link :to="{ name: 'MyDrawings' }" class="button">My drawings</router-link>
+          <router-link :to="{ name: 'DrawingCreate' }" class="button">Add drawing</router-link>
         </div>
 
         <ul>
@@ -59,7 +60,7 @@ loadData();
 }
 
 .buttonDiv {
-  padding: 0px 0 50px 0;
+  padding: 0px 0 10px 0;
   text-align: center;
   overflow: hidden;
 }

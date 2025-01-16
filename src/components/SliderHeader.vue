@@ -59,5 +59,6 @@ window.setInterval(() => {
 
 .menu {
   list-style: none;
+  z-index: 500;
 }
 </style>

@@ -46,5 +46,6 @@ async function clickHandler() {
   max-width: 30px;
   max-height: 20px;
   padding: 0px 0px 0px 3px;
+  display: inline-flex;
 }
 </style>

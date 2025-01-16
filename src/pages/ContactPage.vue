@@ -42,7 +42,7 @@ async function onSubmit() {
 <template>
   <section id="content">
     <div class="container_12">
-      <div class="grid_4 bot-1">
+      <div class="left-column bot-1">
         <h2 class="sectionTitle" style="margin-top: 35px;">Contact Us</h2>
         <div class="map">
           <iframe title="Map"
@@ -56,7 +56,7 @@ async function onSubmit() {
           <dd><span>E-mail: mail@demolink.org</span></dd>
         </div>
       </div>
-      <div class="grid_8">
+      <div class="right-column">
         <div class="block-1 top-5">
           <div class="block-1-shadow">
             <h2 class="sectionTitle">Contact Form</h2>
@@ -82,7 +82,6 @@ async function onSubmit() {
           </div>
         </div>
       </div>
-      <div class="clear"></div>
     </div>
   </section>
 
